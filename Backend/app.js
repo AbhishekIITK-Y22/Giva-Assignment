@@ -3,7 +3,6 @@ const { Client } = require('pg');
 const morgan = require('morgan');
 
 const port = 3000;
-
 const cors = require('cors');
 const app = express();
 
@@ -12,11 +11,11 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 const client = new Client({
-    user: 'abhishek',
-    host: 'localhost',
-    database: 'giva',
-    password: 'abhishek',
-    port: 5432,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 });
 
 client.connect()
